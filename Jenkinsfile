@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                input message: 'Move on and deploy?', ok: 'Yes please!'
+                input message: 'Move on and deploy?', ok: 'Yes please!', submitter: 'qa'
                 echo 'Deploying....'
             }
         }
