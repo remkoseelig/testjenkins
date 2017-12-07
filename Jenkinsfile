@@ -17,12 +17,18 @@ pipeline {
                 echo 'Testing...'
             }
         }
-        stage('Deploy') {
+        stage('Deploy Test') {
             steps {
-                lock('Deploying to env') {
-                    input message: 'Move on and deploy?', ok: 'Yes please!', submitter: 'qa'
-                    echo 'Deploying....'
-                }
+                input message: 'Move on and deploy to Test?', ok: 'Yes please!'
+                milestone()
+                echo "Deploying to Test..."
+            }
+        }
+        stage('Deploy AQ') {
+            steps {
+                input message: 'Move on and deploy to QA?', ok: 'Yes please!', submitter: 'qa'
+                milestone()
+                echo "Deploying to QA..."
             }
         }
     }
