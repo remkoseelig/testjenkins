@@ -17,10 +17,12 @@ pipeline {
                 echo 'Testing...'
             }
         }
-        stage('Deploy', concurrency: 1) {
-            steps {
-                input message: 'Move on and deploy?', ok: 'Yes please!', submitter: 'qa'
-                echo 'Deploying....'
+        stage('Deploy) {
+            lock('Deploying to env') {
+                steps {
+                    input message: 'Move on and deploy?', ok: 'Yes please!', submitter: 'qa'
+                    echo 'Deploying....'
+                }
             }
         }
     }
