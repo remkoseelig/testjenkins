@@ -18,8 +18,8 @@ pipeline {
             }
         }
         stage('Deploy') {
-            lock('Deploying to env') {
-                steps {
+            steps {
+                lock('Deploying to env') {
                     input message: 'Move on and deploy?', ok: 'Yes please!', submitter: 'qa'
                     echo 'Deploying....'
                 }
