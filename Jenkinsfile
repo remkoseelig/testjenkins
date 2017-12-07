@@ -1,9 +1,25 @@
+#!/usr/bin/env groovy
+
 pipeline {
-    agent { docker 'maven:3.3.3' }
+    agent any
+
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
-                sh 'mvn --version'
+                echo 'Building...'
+                sh 'ls -al'
+                echo 'System info...'
+                sh 'df -H'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
